@@ -23,7 +23,7 @@
 <div id="controls" style="margin: 15px;">
  <button id="showhardinfrastructure">Show Surface</button>
  <span style="display: inline-block; width: 30px;"></span>
- <input type="text" id="Filter" placeholder="e.g. Quercus">
+ <input type="text" id="Filter" placeholder="e.g. Driveway">
  <button id="Filter">Highlight</button>
 </div>
 
@@ -61,6 +61,20 @@
         type: "geojson",
         data: "https://raw.githubusercontent.com/UBCGeodata/ubc-geospatial-opendata/master/ubcv/landscape/geojson/ubcv_landscape_hard.geojson"
       });
+      map.on('load', function () {
+      const showAllButton = document.getElementById('showhardinfrastructure');
+      showAllButton.addEventListener('click', Show Surfaces);
+      const highlightButton = document.getElementById('filter');
+      highlightButton.addEventListener('click', highlightsurfaces);
+});
+function highlightSurfaces() {
+ const textEntry = document.getElementById('controls');
+ const L_SHARDToHighlight = textEntry.value;
+ if (L_SHARDToHighlight === '') {
+ return;
+ }
+ map.setFilter('hard-fill', ['in', taxaToHighlight, ['get', 'LSHARD_TYPE']]);
+}
 
       map.addLayer({
         id: "hard-fill",
@@ -85,6 +99,7 @@
         paint: { "line-color": "#333", "line-width": 0.5 }
       });
     });
+
   </script>
 </body>
 </html>
