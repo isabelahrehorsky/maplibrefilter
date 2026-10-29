@@ -37,7 +37,6 @@
       <span style="background:#4ea8a0"></span>Concrete<br>
       <span style="background:#264653"></span>Parking<br>
       <span style="background:#9b2226"></span>Road<br>
-      <small>Data: UBC Geodata (compiled by McElhanney, 2020–21), PDDL 1.0</small>
     </div>
   </div>
 
@@ -73,7 +72,7 @@ function highlightSurfaces() {
  if (L_SHARDToHighlight === '') {
  return;
  }
- map.setFilter('hard-fill', ['in', taxaToHighlight, ['get', 'LSHARD_TYPE']]);
+ map.setFilter('hard-fill', ['in', L_SHARDToHighlight, ['get', 'LSHARD_TYPE']]);
 }
 
       map.addLayer({
